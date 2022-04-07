@@ -1,0 +1,26 @@
+@use '../../foundation' as f;
+
+.c-btn {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  padding: 30px 10px;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #f2ede9, #ded8d3);
+  border: 1px solid f.$gray;
+  text-decoration: none;
+  font-weight: 700;
+
+  @include f.fsz(16, 23);
+  @include f.mq(md) {
+    width: auto;
+    min-width: 430px;
+  }
+  &__wrap {
+    margin-bottom: 30px;
+    
+    @include f.mq(md) {
+      margin-bottom: 60px;
+    }
+  }
+}

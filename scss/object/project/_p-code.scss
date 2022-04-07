@@ -1,0 +1,20 @@
+@use '../../foundation' as f;
+
+.p-code {
+  background-color: f.$gray02;
+  padding: 10px 0;
+  margin-bottom: 30px;
+
+  @include f.mq(md) {
+    margin-bottom: 60px;
+  }
+  pre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  code {
+    width: 100%;
+  }
+}

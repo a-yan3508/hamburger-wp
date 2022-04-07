@@ -1,0 +1,32 @@
+@use '../foundation' as f;
+
+.u-ovh {
+  overflow: hidden !important;
+}
+.u-spOnly {
+  @include f.mq(md) {
+    display: none !important;
+  }
+}
+.u-spOnly02 {
+  @include f.mq(lg) {
+    display: none !important;
+  }
+}
+.u-pcOnly {
+  display: none !important;
+
+  @include f.mq(md) {
+    display: block !important;
+  }
+}
+.u-pcOnly02 {
+  display: none !important;
+
+  @include f.mq(lg) {
+    display: block !important;
+  }
+}
+.u-mb30 {
+  margin-bottom: 30px !important;
+}

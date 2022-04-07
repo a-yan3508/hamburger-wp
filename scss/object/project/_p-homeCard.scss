@@ -1,0 +1,137 @@
+@use '../../foundation' as f;
+
+.p-homeCardUnit {
+  @include f.mq(md) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .p-homeCard {
+    margin: 20px 0 0 0;
+    &:first-child {
+      margin: 0;
+    }
+  }
+  &--col2 {
+    .p-homeCard {
+      @include f.mq(md) {
+        width: calc((100% - 40px) / 2);
+        margin: 40px 0 0 40px;
+      }
+      @include f.mq(lg) {
+        width: calc((100% - 6.01503759%) / 2);
+        margin: 6.01503759% 0 0 6.01503759%;
+      }
+      &:nth-child(-n+2) {
+        @include f.mq(md) {
+          margin-top: 0;
+        }
+      }
+      &:nth-child(2n+1) {
+        @include f.mq(md) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+.p-homeCard {
+  width: 100%;
+  min-height: 642px;
+
+  @include f.mq(md) {
+    min-height: 681px;
+  }
+  @include f.mq(lg) {
+    min-height: 62.1354167vw;
+  }
+  &--takeOut {
+    background: url('/src/common/images/front-page/takeout_bg.jpg') no-repeat center;
+    background-size: cover;
+    .p-homeCard__head {
+      color: #eaeaea;
+    }
+  }
+  &--eatIn {
+    background: url('/src/common/images/front-page/eatin_bg.jpg') no-repeat center;
+    background-size: cover;
+  }
+  &__inner {
+    width: 100%;
+    min-height: 642px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px;
+    text-decoration: none;
+
+    @include f.mq(md) {
+      min-height: 100%;
+    }
+  }
+  &__head {
+    display: block;
+    margin-bottom: 40px;
+    color: #fff;
+    font-family: f.$roboto;
+
+    @include f.fsz(41, 54);
+    @include f.mq(md) {
+      @include f.fsz(44, 58);
+    }
+    @include f.mq(lg) {
+      font-size: 4.16666667vw;
+      line-height: 1.325;
+    }
+    @include f.mq(xlg) {
+      @include f.fsz(80, 106);
+    }
+    &::after {
+      content: '';
+      display: block;
+      width: 34px;
+      height: 4px;
+      margin-top: 19px;
+      background-color: #fff;
+
+      @include f.mq(md) {
+        width: 36px;
+      }
+      @include f.mq(lg) {
+        width: .788em;
+        max-width: 63px;
+      }
+    }
+  }
+  &__body {
+    .p-homeCard__box {
+      margin-top: 10px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+  &__box {
+    min-height: 162px;
+    padding: 20px 10px;
+    background-color: rgba(255, 255, 255, .8);
+
+    @include f.mq(md) {
+      min-height: 172px;
+    }
+    @include f.mq(lg) {
+      min-height: 9.0625vw;
+    }
+  }
+  &__ttl {
+    margin-bottom: 20px;
+    font-weight: 700;
+
+    @include f.fsz(22, 33);
+    @include f.mq(md) {
+      @include f.fsz(24, 36);
+    }
+  }
+  &__txt {
+    @include f.fsz(16, 23);
+  }
+}

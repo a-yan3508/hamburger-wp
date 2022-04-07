@@ -1,0 +1,102 @@
+@use '../../foundation' as f;
+
+.p-pager {
+  width: calc(100% - 40px);
+  margin: 0 auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: f.$gray;
+  font-family: f.$roboto;
+
+  @include f.mq(md) {
+    justify-content: center;
+  }
+  @include f.mq(lg) {
+    margin: 0 auto 64px;
+  }
+  li {
+    @include f.mq(md) {
+      margin-left: 15px;
+    }
+    &:nth-child(-n+3) {
+      @include f.mq(md) {
+        margin-left: 0;
+      }
+    }
+    &:last-child {
+      @include f.mq(md) {
+        margin-left: 0;
+      }
+    }
+  }
+  &__num {
+    display: none;
+
+    @include f.mq(md) {
+      display: block;
+      margin-right: 19px;
+
+      @include f.fsz(16, 33);
+    }
+  }
+  &__prev, &__next {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    span {
+      font-family: f.$mPlus;
+
+      @include f.fsz(16, 23);
+      @include f.mq(md) {
+        display: none;
+      }
+    }
+  }
+  &__prev {
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      margin-right: 8px;
+      background: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='18.593' height='17.772' viewBox='0 0 18.593 17.772'%3E%3Cg transform='translate(-413.583 -2250.646)'%3E%3Cpath d='M410.47,5468.419l-8.886-8.886,8.886-8.886.707.707L403,5459.533l8.179,8.179Z' transform='translate(12 -3200)' fill='%23707070'/%3E%3Cpath d='M410.47,5468.419l-8.886-8.886,8.886-8.886.707.707L403,5459.533l8.179,8.179Z' transform='translate(21 -3200)' fill='%23707070'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
+      background-size: 17px 17px;
+
+      @include f.mq(md) {
+        margin-right: 17px;
+      }
+    }
+  }
+  &__next {
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      margin-left: 8px;
+      background: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='18.593' height='17.772' viewBox='0 0 18.593 17.772'%3E%3Cg transform='translate(432.177 2268.419) rotate(180)'%3E%3Cpath d='M410.47,5468.419l-8.886-8.886,8.886-8.886.707.707L403,5459.533l8.179,8.179Z' transform='translate(12 -3200)' fill='%23707070'/%3E%3Cpath d='M410.47,5468.419l-8.886-8.886,8.886-8.886.707.707L403,5459.533l8.179,8.179Z' transform='translate(21 -3200)' fill='%23707070'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
+      background-size: 17px 17px;
+
+      @include f.mq(md) {
+        margin-left: 17px;
+      }
+    }
+  }
+  &__link {
+    display: none;
+
+    @include f.mq(md) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: 1px solid f.$gray;
+      padding: 7px 13px;
+    }
+    &.is-current {
+      background-color: #3c2b1c;
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+@use '../../foundation' as f;
+
+.p-homeMap {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  &__inner {
+    width: 100%;
+    height: 100%;
+    background: url('/src/common/images/front-page/map_bg_sp.png') no-repeat center;
+    background-size: cover;
+
+    @include f.mq(md) {
+      background-image: url('/src/common/images/front-page/map_bg_pc.png');
+    }
+  }
+  &__cont {
+    position: relative;
+    color: #fff;
+    padding: 40px 40px 50px 40px;
+    z-index: 1;
+
+    @include f.mq(md) {
+      padding: 40px;
+    }
+    @include f.mq(lg) {
+      width: 61.1719253%;
+      // padding: 8.42105263% 12.6315789%;
+      padding: 4.16666667vw 6.25vw;
+    }
+    @include f.mq(xlg) {
+      padding: 80px 120px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background-color: rgba(0, 0, 0, .29);
+      z-index: -1;
+
+      @include f.mq(md) {
+        height: 100%;
+      }
+    }
+  }
+  &__ttl {
+    margin-bottom: 20px;
+    font-weight: 700;
+    
+    @include f.fsz(30, 45);
+    @include f.mq(lg) {
+      margin-bottom: 64px;
+
+      @include f.fsz(36, 54);
+    }
+    &::after {
+      content: '';
+      display: block;
+      width: 75px;
+      height: 2px;
+      margin-top: 20px;
+      background-color: currentColor;
+
+      @include f.mq(lg) {
+        margin-top: 56px;
+      }
+    }
+  }
+  &__txt {
+    font-weight: 700;
+
+    @include f.fsz(14, 33);
+    @include f.mq(lg) {
+      @include f.fsz(16, 33);
+    }
+  }
+}

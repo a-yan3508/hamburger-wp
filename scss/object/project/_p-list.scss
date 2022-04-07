@@ -1,0 +1,35 @@
+@use '../../foundation' as f;
+
+.p-list {
+  margin-bottom: 30px;
+
+  @include f.mq(md) {
+    margin-bottom: 60px;
+  }
+  &--num {
+    counter-reset: number 0;
+    li {
+      &::before {
+        counter-increment: number 1;
+        content: counter(number) ".";
+      }
+      > ol {
+        padding-left: 1.3em !important;
+        counter-reset: number 0;
+        li {
+          &::before {
+            counter-increment: number 1;
+            content: counter(number) ".";
+          }
+        }
+      }
+    }
+  }
+  li {
+    @include f.fsz(16, 23);
+    ul, ol {
+      padding-left: 1em;
+      margin: 20px 0;
+    }
+  }
+}

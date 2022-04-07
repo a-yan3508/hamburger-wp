@@ -1,0 +1,14 @@
+@use '../../foundation' as f;
+
+.c-txt {
+  width: 100%;
+  margin-bottom: 20px;
+
+  @include f.fsz(16, 23);
+  @include f.mq(md) {
+    margin-bottom: 40px;
+  }
+  @include f.mq(lg) {
+    margin-bottom: 70px;
+  }
+}
