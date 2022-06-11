@@ -1,15 +1,18 @@
     <footer class="l-footer">
-      <ul class="l-footer__linkList">
-        <li>
-          <a href="#">ショップ情報</a>
-        </li>
-        <li>
-          <a href="#">ヒストリー</a>
-        </li>
-      </ul>
+      <?php
+        wp_nav_menu(
+          array(
+            'menu'            => 'footermenu',
+            'menu_class'      => 'l-footer__linkList',
+            'container'       => false,
+            'fallback_cb'     => 'wp_page_menu',
+            'theme_location'  => 'footer navigation',
+          )
+        );
+      ?>
       <div class="l-footer__copy">Copyright: RaiseTech</div>
     </footer>
 
-    <script src="/src/common/js/app.js"></script>
+    <?php wp_footer(); ?>
   </body>
 </html>

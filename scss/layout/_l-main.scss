@@ -1,7 +1,0 @@
-@use '../foundation' as f;
-
-.l-main {
-  @include f.mq(lg) {
-    width: calc(100% - 367px);
-  }
-}
