@@ -20,7 +20,6 @@ jQuery(function($) {
     });
   
     menuBg.on('click', function () {
-      $(this).removeClass('is-active');
       menu.removeClass('is-active');
       menuSlide.removeClass('is-active');
       $('body').removeClass('u-ovh');
