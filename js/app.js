@@ -6,7 +6,7 @@ jQuery(function($) {
     const menuSlide = $('.l-menu__inner');
     const menuClose = $('.l-menu__close');
     const menuBg = $('.l-menu__bg');
-  
+    
     headerMenuToggle.on('click', function () {
       menu.addClass('is-active');
       menuSlide.addClass('is-active');
@@ -20,9 +20,21 @@ jQuery(function($) {
     });
   
     menuBg.on('click', function () {
+      $(this).removeClass('is-active');
       menu.removeClass('is-active');
       menuSlide.removeClass('is-active');
       $('body').removeClass('u-ovh');
+    });
+    
+    $(window).on('load resize',function() {
+      const w = $(window).width();
+      if (w < 1280) {
+        menu.addClass('u-transition');
+        menuSlide.addClass('u-transition');
+      } else {
+        menu.removeClass('u-transition');
+        menuSlide.removeClass('u-transition');
+      }
     });
   }
 });
