@@ -15,13 +15,15 @@
           </div>
           <div class="p-productItem__body">
             <p class="p-productItem__name"><?php the_title(); ?></p>
-            <?php
-              if ($post->post_content == "") {
-                echo the_excerpt();
-              } else {
-                echo the_content();
-              }
-            ?>
+            <div class="p-productItem__cont">
+              <?php
+                if ($post->post_content == "") {
+                  echo the_excerpt();
+                } else {
+                  echo mb_substr($post->post_content, 0, 200, 'UTF-8');
+                }
+              ?>
+            </div>
             <a href="<?php the_permalink(); ?>" class="p-productItem__btn">詳しく見る</a>
           </div>
         </div>
