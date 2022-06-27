@@ -10,43 +10,55 @@
     <section class="p-homeSect">
       <div class="l-cont">
         <div class="p-homeCardUnit p-homeCardUnit--col2">
-          <?php
-            $cat = array();
-            $categories = get_categories();
-            foreach( $categories as $category ) {
-              array_push($cat, $category->name);
-            }
-            $cat_num = wp_count_terms('category');
-          ?>
           <div class="p-homeCard p-homeCard--takeOut">
             <div class="p-homeCard__inner">
               <h2 class="p-homeCard__head">Take Out</h2>
               <div class="p-homeCard__body">
                 <?php
-                  for ($i = 4; $i <= $cat_num; $i++) {
-                    echo '<div class="p-homeCard__box">';
-                    echo '<p class="p-homeCard__ttl">'.$cat[$i - 2].'</p>';
-                    $args = array(
-                      'post_type' => 'post',
-                      'category__and' => array(3, $i),
-                      'posts_per_page' => 100,
-                      'orderby' => 'date', 
-                      'order' => 'DESC',
-                    );
-                    $the_query = new WP_Query($args);
-                    echo '<p class="p-homeCard__txt">';
-                    if ($the_query->have_posts()) {
-                      while ($the_query->have_posts()): $the_query->the_post();
-                        echo '<a href=';
-                        echo the_permalink();
-                        echo '>';
-                        echo the_title();
-                        echo '</a>&emsp;';
-                      endwhile;
-                    } else {
-                      echo '現在、該当メニューがございません。';
+                  $cat = array();
+                  $cat_id = array();
+                  $categories = get_categories();
+                  foreach( $categories as $category ) {
+                    array_push($cat, $category->name);
+                    array_push($cat_id, $category->term_id);
+                  }
+                  $cat = array_diff($cat, array('Eat In', 'Take Out', 'Uncategorized'));
+                  $cat = array_values($cat);
+
+                  $cat_id = array_diff($cat_id, array('1', '2', '3'));
+                  $cat_id = array_values($cat_id);
+                ?>
+                <?php
+                  if (!empty($cat) && !empty($cat_id)) {
+                    for ($i = 0; $i < count($cat); $i++) {
+                      echo '<div class="p-homeCard__box">';
+                      echo '<p class="p-homeCard__ttl">'.$cat[$i].'</p>';
+                      $args = array(
+                        'post_type' => 'post',
+                        'category__and' => array(2, $cat_id[$i]),
+                        'posts_per_page' => 100,
+                        'orderby' => 'date', 
+                        'order' => 'DESC',
+                      );
+                      $the_query = new WP_Query($args);
+                      echo '<p class="p-homeCard__txt">';
+                      if ($the_query->have_posts()) {
+                        while ($the_query->have_posts()): $the_query->the_post();
+                          echo '<a href=';
+                          echo the_permalink();
+                          echo '>';
+                          echo the_title();
+                          echo '</a>&emsp;';
+                        endwhile;
+                      } else {
+                        echo '現在、該当メニューがございません。';
+                      }
+                      echo '</p>';
+                      echo '</div>';
                     }
-                    echo '</p>';
+                  } else {
+                    echo '<div class="p-homeCard__box">';
+                    echo '<p class="p-homeCard__txt">現在、該当メニューがございません。</p>';
                     echo '</div>';
                   }
                 ?>
@@ -57,13 +69,14 @@
             <div class="p-homeCard__inner">
               <h2 class="p-homeCard__head">Eat In</h2>
               <div class="p-homeCard__body">
-                <?php
-                  for ($i = 4; $i <= $cat_num; $i++) {
+              <?php
+                if (!empty($cat) && !empty($cat_id)) {
+                  for ($i = 0; $i < count($cat); $i++) {
                     echo '<div class="p-homeCard__box">';
-                    echo '<p class="p-homeCard__ttl">'.$cat[$i - 2].'</p>';
+                    echo '<p class="p-homeCard__ttl">'.$cat[$i].'</p>';
                     $args = array(
                       'post_type' => 'post',
-                      'category__and' => array(2, $i),
+                      'category__and' => array(3, $cat_id[$i]),
                       'posts_per_page' => 100,
                       'orderby' => 'date', 
                       'order' => 'DESC',
@@ -84,7 +97,12 @@
                     echo '</p>';
                     echo '</div>';
                   }
-                ?>
+                } else {
+                  echo '<div class="p-homeCard__box">';
+                  echo '<p class="p-homeCard__txt">現在、該当メニューがございません。</p>';
+                  echo '</div>';
+                }
+              ?>
               </div>
             </div>
           </div>
